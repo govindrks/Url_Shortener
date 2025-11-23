@@ -47,7 +47,7 @@ export default function App() {
           
           <div className="card shell">
             <div className="card-body">
-              <h2>Shorten a long link</h2>
+              <h2>Shorten a long link </h2>
               <p className="muted">No credit card required.</p>
 
               <form onSubmit={onSubmit} className="short-form">
