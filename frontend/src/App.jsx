@@ -34,10 +34,6 @@ export default function App() {
       
       <header className="topbar">
         <div className="logo">URL shortener</div>
-        <nav>
-          <button className="btn ghost">Log in</button>
-          <button className="btn primary">Sign up Free</button>
-        </nav>
       </header>
 
      

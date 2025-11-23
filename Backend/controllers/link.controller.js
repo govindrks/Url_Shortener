@@ -19,6 +19,7 @@ export async function createShort(req, res) {
       exists = await Link.findOne({ shortCode });
     } while (exists);
 
+    // Here we are creating the document in the database
     const doc = await Link.create({ shortCode, originalUrl: urlObj.toString() });
     res.status(201).json({ shortUrl: `${process.env.BASE_URL}/${doc.shortCode}` });
   } catch (err) {
@@ -26,6 +27,7 @@ export async function createShort(req, res) {
   }
 }
 
+// Redirect handler when accessing short URL which is stored in the database each timeaRTY\
 export async function handleRedirect(req, res) {
   const { code } = req.params;
   const link = await Link.findOne({ shortCode: code });
