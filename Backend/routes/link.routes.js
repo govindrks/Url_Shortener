@@ -5,7 +5,10 @@ import { createShort, handleRedirect } from '../controllers/link.controller.js';
 
 const router = express.Router();
 
-router.post('/', createShort); // create endpoint
-router.get('/:code', handleRedirect); // catch-all short URL route
+// create endpoint
+router.post('/', createShort); 
+
+// catch-all short URL route
+router.get('/:code', handleRedirect); 
 
 export default router;

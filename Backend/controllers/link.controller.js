@@ -1,9 +1,9 @@
 import { customAlphabet } from 'nanoid';
 import { Link } from '../models/link.model.js';
-import dotenv from 'dotenv';
 const nanoid = customAlphabet('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 6);
 
-dotenv.config();
+
+const BASE_URL = 'https://url-shortener-m2jp.onrender.com';
 
 export async function createShort(req, res) {
   const { originalUrl } = req.body;
@@ -19,15 +19,16 @@ export async function createShort(req, res) {
       exists = await Link.findOne({ shortCode });
     } while (exists);
 
-    // Here we are creating the document in the database
+    console.log(BASE_URL);
     const doc = await Link.create({ shortCode, originalUrl: urlObj.toString() });
-    res.status(201).json({ shortUrl: `${process.env.BASE_URL}/${doc.shortCode}` });
+    res.status(201).json({ shortUrl: `${BASE_URL}/${doc.shortCode}` });
   } catch (err) {
     res.status(400).json({ error: 'Invalid URL' });
   }
 }
 
-// Redirect handler when accessing short URL which is stored in the database each timeaRTY\
+
+// Redirect handler when accessing short URL which is stored in the database each time
 export async function handleRedirect(req, res) {
   const { code } = req.params;
   const link = await Link.findOne({ shortCode: code });
