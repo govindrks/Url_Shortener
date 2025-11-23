@@ -1,6 +1,6 @@
 // Small API helper - adapt to your backend
 export async function createShortLink(target) {
-  const res = await fetch("http://localhost:5555", {
+  const res = await fetch("https://url-shortener-m2jp.onrender.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ originalUrl:target })

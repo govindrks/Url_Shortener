@@ -8,8 +8,9 @@ dotenv.config();
 export async function createShort(req, res) {
   const { originalUrl } = req.body;
   try {
-    // validate URL
+    // Here i am validating the URL
     const urlObj = new URL(originalUrl); // throws if invalid
+
     // generate unique shortCode (retry on collision)
     let shortCode;
     let exists;
